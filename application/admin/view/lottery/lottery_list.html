@@ -1,0 +1,81 @@
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="__STATIC__/admin/css/font-awesome.min.css">
+<link rel="stylesheet" href="__STATIC__/admin/css/base.css">
+<div class="container-fluid main">
+	<div class="main-top"><span class="glyphicon glyphicon-align-left" aria-hidden="true"></span>奖项</div>
+	<div class="main-content" style="margin-bottom: 100px;">
+  <!-- Nav tabs -->
+	  <ul class="nav nav-tabs" role="tablist">
+		<li role="presentation" class="active"><a href="#profile" aria-controls="profile" role="tab" data-toggle="tab">  奖项</a></li>
+	  </ul>
+		<table class="table table-striped" style="font-size:14px;">
+			<th>编号</th>
+			<th>缩略图</th>
+			<th>是否是奖品</th>
+			<th>奖品描述</th>
+			<th>操作</th>
+			{volist id="vv" name="info"}
+			  <tr>
+				  <td>{$vv.code}</td>
+				  <td ><img style="width: 150px;" src="{$vv.img}"></td>
+				  {if condition="$vv.is_win eq 1"}
+				  <td>是</td>
+				  {else/}
+				  <td>否</td>
+				  {/if}
+				  <td>{$vv.desc}</td>
+
+				  <td><button class="btn btn-danger btn-sm" onclick="del(this,{$vv.id})">删除</button>
+				</td>
+			  </tr>
+			{/volist}
+			</table>
+			<form action="lottery_list" method="post"  enctype="multipart/form-data">
+				<input type="file" id="path" name="path"/><br/>
+				<div class="col -sm-3  col-lg-2" style="width:500px; ">
+					<select class="form-control" name="is_win" id="">
+						<option value="1">中奖产品</option>
+						<option value="0">无</option>
+					</select>
+				</div>
+				<div class="col -sm-3  col-lg-2" style="width:500px; ">
+					<input class="form-control" type="text" name="code" placeholder="只能是1-6"/>
+				</div>
+				<div class="col -sm-3  col-lg-2" style="width:500px; ">
+					<input class="form-control" type="text" name="desc" placeholder="奖品描述"/>
+				</div>
+			 <div><button type="submit" class="btn btn-success">保存</button></div>
+			 </form>
+	</div>
+			  
+	</div>
+</div>
+	</div>
+</div>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="__STATIC__/admin/layer/layer.js"></script>
+<script>
+    function del(obj,id) {
+        layer.confirm('确定要删除这条数据吗？', {
+            btn: ['确定', '取消'] //按钮
+        }, function () {
+            $.ajax({
+                type: 'post',
+                url: "{:url('del_lottery_img')}",
+                dataType: 'json',
+                data: {
+					'id': id,
+				},
+                success: function () {
+                    layer.msg('删除成功', {icon: 1});
+                    $(obj).parent().parent().remove();
+                },
+                error: function () {
+                    layer.msg('通信通道发生错误！刷新页面重试！');
+                }
+            });
+        }, function () {
+
+        });
+    }
+</script>

@@ -1,0 +1,39 @@
+.content {
+  margin-top: 0.2rem;
+  /*padding: 0.2rem;*/
+  background-color: #FFFFFF;
+}
+.content li {
+  padding: 0.2rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid #f2f2f2;
+}
+.content_l h2 {
+  font-size: 0.32rem;
+  color: #111111;
+}
+.content_l span {
+  font-size: 0.24rem;
+  color: #666666;
+}
+.content_l strong {
+  font-size: 0.32rem;
+  color: #ff6f00;
+  font-weight: normal;
+}
+.content_r h2 {
+  font-size: 0.34rem;
+  color: #ff6f00;
+}
+.content_r span {
+  font-size: 0.26rem;
+  color: #666666;
+}
+.content .more_loading {
+  display: flex;
+  justify-content: center;
+  margin-top: 0.1rem;
+  border-bottom: none;
+}

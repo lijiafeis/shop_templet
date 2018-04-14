@@ -1,0 +1,131 @@
+.order_good {
+  padding: 0.2rem;
+  display: flex;
+  background-color: #f2f2f2;
+  border-bottom: 1px solid #FFFFFF;
+}
+.order_good section:first-child {
+  width: 1.6rem;
+  height: 1.6rem;
+  position: relative;
+  overflow: hidden;
+}
+.order_good section:first-child img {
+  position: absolute;
+  width: 100%;
+  min-height: 100%;
+}
+.order_good section:last-child {
+  flex: 1;
+  margin-left: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.good_name {
+  font-size: 0.28rem;
+  color: #333333;
+  font-weight: bold;
+}
+.good_num {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.good_num p,.good_num p span {
+  font-size: 0.24rem;
+  color: #666666;
+}
+.good_num .good_price {
+  font-size: 0.3rem;
+  color: #ff6f00;
+}
+.state {
+  height: calc(100vh - 1.68rem);
+  background-color: #F2F2F2;
+}
+.order_h {
+  padding: 0 0.2rem;
+  background-color: #FFFFFF;
+  height: 0.8rem;
+  line-height: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order_h p:first-child {
+  font-size: 0.28rem;
+  color: #666666;
+}
+.order_h p:last-child {
+  font-size: 0.28rem;
+  color: #ff6f00;
+}
+.order_total {
+  height: 0.8rem;
+  line-height: 0.8rem;
+  text-align: right;
+  border-bottom: 1px solid #F2F2F2;
+  padding: 0 0.2rem;
+  background-color: #FFFFFF;
+}
+.order_total span:first-child {
+  font-size: 0.24rem;
+  color: #666666;
+}
+.order_total span:last-child {
+  font-size: 0.28rem;
+  color: #111111;
+}
+.order_f {
+  height: 0.8rem;
+  line-height: 0.8rem;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 0.2rem;
+  background-color: #FFFFFF;
+  border-bottom: 1px solid #f2f2f2;
+}
+.order_f p {
+  font-size: 0.28rem;
+  color: #999999;
+}
+.order_f a {
+  display: inline-block;
+  height: 0.56rem;
+  width: 1.4rem;
+  line-height: 0.56rem;
+  font-size: .28rem;
+  text-align: center;
+  border-radius: 0.1rem;
+}
+.order_f a:first-child {
+  color: #333333;
+  border: 1px solid #999999;
+}
+.order_f a:last-child {
+  color: #ff6f00;
+  border: 1px solid #ff6f00;
+}
+.order_w {
+  padding: 0 0.3rem;
+  height: 1rem;
+  line-height: 1rem;
+  border-bottom: 1px solid #f2f2f2;
+  background-color: #FFFFFF;
+}
+.order_w img {
+  width: 0.4rem;
+}
+.no_goods{
+  flex: 1;
+  text-align: center;
+  display: inline-block;
+  /*background-color: #FFFFFF;*/
+}
+.no_goods img{
+  margin-top: 25vh;
+  margin-left: 2rem;
+  width: 3rem;
+  height: 3rem;
+}

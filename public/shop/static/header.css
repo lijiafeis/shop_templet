@@ -1,0 +1,23 @@
+.header {
+  width: 100%;
+  height: 0.88rem;
+  display: flex;
+  align-items: center;
+}
+.count_top {
+  background-color: #FFFFFF;
+  justify-content: space-around;
+  align-items: center;
+  border-bottom: 1px solid #f2f2f2;
+}
+.count_top img {
+  width: 0.18rem;
+  margin-left: 0.4rem;
+}
+.count_top span {
+  margin-right: 0.4rem;
+  flex: 1;
+  font-size: 0.3rem;
+  color: #111111;
+  text-align: center;
+}

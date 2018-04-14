@@ -1,0 +1,127 @@
+---------------------------------------------------------------
+[ 2018-04-10T11:16:39+08:00 ] 0.0.0.0 GET /
+[ info ] www.fanli.com:8888/ [运行时间：0.036612s][吞吐率：27.31req/s] [内存消耗：1,523.88kb] [文件加载：41]
+[ info ] [ LANG ] /Users/lijiafei/Documents/fanli/fanli/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.fanli.com:8888',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'PHPSESSID=43c69db104e8aa8ad0e52268b3164dc4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\home\controller\Error->index[ /Users/lijiafei/Documents/fanli/fanli/application/home/controller/Error.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-04-10T11:16:44+08:00 ] 0.0.0.0 GET /
+[ info ] www.fanli.com:8888/ [运行时间：0.023033s][吞吐率：43.42req/s] [内存消耗：1,524.27kb] [文件加载：41]
+[ info ] [ LANG ] /Users/lijiafei/Documents/fanli/fanli/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => '',
+    1 => NULL,
+    2 => NULL,
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.fanli.com:8888',
+  'connection' => 'keep-alive',
+  'cache-control' => 'max-age=0',
+  'upgrade-insecure-requests' => '1',
+  'user-agent' => 'Mozilla/5.0 (Linux; Android 6.0; Nexus 5 Build/MRA58N) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/65.0.3325.181 Mobile Safari/537.36',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,image/apng,*/*;q=0.8',
+  'accept-encoding' => 'gzip, deflate',
+  'accept-language' => 'zh-CN,zh;q=0.9',
+  'cookie' => 'PHPSESSID=43c69db104e8aa8ad0e52268b3164dc4',
+)
+[ info ] [ PARAM ] array (
+)
+[ info ] [ RUN ] app\home\controller\Error->index[ /Users/lijiafei/Documents/fanli/fanli/application/home/controller/Error.php ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-04-10T13:23:26+08:00 ] 0.0.0.0 GET /admin/index/index.html
+[ info ] www.fanli.com:8888/admin/index/index.html [运行时间：0.029756s][吞吐率：33.61req/s] [内存消耗：1,588.86kb] [文件加载：45]
+[ info ] [ LANG ] /Users/lijiafei/Documents/fanli/fanli/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'index',
+    2 => 'index',
+  ),
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.fanli.com:8888',
+  'upgrade-insecure-requests' => '1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1 Safari/605.1.15',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+  'connection' => 'keep-alive',
+)
+[ info ] [ PARAM ] array (
+  '/admin/index/index_html' => '',
+)
+[ info ] [ SESSION ] INIT array (
+  'id' => '',
+  'var_session_id' => '',
+  'prefix' => 'think',
+  'type' => '',
+  'auto_start' => true,
+)
+[ info ] [ VIEW ] /Users/lijiafei/Documents/fanli/fanli/thinkphp/tpl/dispatch_jump.tpl [ array (
+  0 => 'code',
+  1 => 'msg',
+  2 => 'data',
+  3 => 'url',
+  4 => 'wait',
+) ]
+[ info ] [ LOG ] INIT File
+---------------------------------------------------------------
+[ 2018-04-10T13:23:29+08:00 ] 0.0.0.0 GET /fanliAdmin.html
+[ info ] www.fanli.com:8888/fanliAdmin.html [运行时间：0.093180s][吞吐率：10.73req/s] [内存消耗：1,590.41kb] [文件加载：43]
+[ info ] [ LANG ] /Users/lijiafei/Documents/fanli/fanli/thinkphp/lang/zh-cn.php
+[ info ] [ ROUTE ] array (
+  'type' => 'module',
+  'module' => 
+  array (
+    0 => 'admin',
+    1 => 'User',
+    2 => 'index',
+  ),
+  'convert' => false,
+)
+[ info ] [ HEADER ] array (
+  'host' => 'www.fanli.com:8888',
+  'cookie' => 'PHPSESSID=cb780e07da556c4af03a40afa8825537',
+  'connection' => 'keep-alive',
+  'upgrade-insecure-requests' => '1',
+  'accept' => 'text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8',
+  'user-agent' => 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_13_4) AppleWebKit/605.1.15 (KHTML, like Gecko) Version/11.1 Safari/605.1.15',
+  'referer' => 'http://www.fanli.com:8888/admin/index/index.html',
+  'accept-language' => 'zh-cn',
+  'accept-encoding' => 'gzip, deflate',
+)
+[ info ] [ PARAM ] array (
+  '/fanliAdmin_html' => '',
+)
+[ info ] [ RUN ] app\admin\controller\User->index[ /Users/lijiafei/Documents/fanli/fanli/application/admin/controller/User.php ]
+[ info ] [ VIEW ] /Users/lijiafei/Documents/fanli/fanli/public/../application/admin/view/user/index.html [ array (
+) ]
+[ info ] [ LOG ] INIT File

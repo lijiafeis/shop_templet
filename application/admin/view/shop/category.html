@@ -1,0 +1,89 @@
+<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+<link rel="stylesheet" href="__STATIC__/admin/css/base.css">
+<link href="__STATIC__/admin/css/fileinput.css" media="all" rel="stylesheet" type="text/css" />
+<style>
+.btn-default{background:#44b549;color:#fff;}
+.form-group1:hover{background:#fff;}
+ .table tr td img{height:30px;cursor:hand;}
+.code:hover{cursor:hand;}
+</style>
+<div class="container-fluid main">
+	<div class="main-top"><span  aria-hidden="true"></span>商品分类</div>
+		<div class="main-content">
+		  <ul class="nav nav-tabs" role="tablist">
+			<li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">商品分类</a></li>
+		  </ul>
+
+		  <div class="tab-content well" style="margin-top:20px;">
+			<a href="{:url('add_category')}"><button class="btn btn-warning" style="margin:10px;">添加新分类</button></a>
+			<div role="tabpanel" class="tab-pane active" id="home">
+
+				<table class="table table-striped" style="font-size:14px;">
+				<th>分类名称</th>
+				<th>分类层级</th>
+				<th>缩略图</th>
+				<th>排序</th>
+				<th>操作</th>
+				{volist name="pid_info" id="vv" key="kk" empty="$empty"}
+				  <tr>
+					<td>{$vv.cate_name}</td>
+					<td style="font-size:12px;">{eq name="vv.pid" value="0"}顶级分类{else/}二级分类{/eq}</td>
+					<td ><img src="{$vv.pic_url}"></td>
+					<td>{$vv.code}</td>
+					<td>
+					<a href="{:url('add_category')}?cate_id={$vv.cate_id}"><button class="btn btn-default btn-sm">修改</button></a>
+					<button class="btn btn-danger btn-sm" onclick="del(this,'{$vv.cate_id}')">删除</button>
+					</td>
+				  </tr>
+				  {volist name="vv.children" id="v"}
+					  <tr style="color:#999;">
+						<td style="font-size:12px;">　———{$v.cate_name}</td>
+						<td style="font-size:12px;">{eq name="v.pid" value="0">顶级分类
+							{else/}二级分类{/eq}</td>
+						<td ><img src="{$v.pic_url}"></td>
+						<td>{$v.code}</td>
+						<td>
+						<a href="{:url('add_category')}?cate_id={$v.cate_id}"><button class="btn btn-default btn-sm">修改</button></a>
+						<button class="btn btn-danger btn-sm" onclick="del(this,'{$v.cate_id}')">删除</button>
+						</td>
+					  </tr>
+					{/volist}
+				{/volist}
+				</table>
+				  <div style="clear:both"></div>
+			</div>
+		  </div>
+		</div>
+</div>
+<script src="__STATIC__/admin/js/jquery.js"></script>
+<script src="__STATIC__/admin/js/bootstrap.min.js"></script>
+<script src="__STATIC__/admin/layer/layer.js"></script>
+<script>
+function del(obj,id){
+    layer.confirm('确定删除当前的记录？', {
+        btn: ['是，确认','否，再看看'] //按钮
+    }, function(){
+        var index = layer.load(2,{
+            shade:[0.6,"#000"]
+        });
+        $.ajax({
+            type:'post',
+            url:"{:url('del_shop_categrey')}",
+            dataType:'json',
+            data:{'id':id},
+            success:function(){
+                layer.close(index);
+                layer.msg('删除成功', {icon: 1});
+                $(obj).parent().parent().remove();
+            },
+            error:function(){
+                layer.close(index);
+                layer.msg('通信通道发生错误！刷新页面重试！');
+            }
+        });
+    }, function(){
+
+    });
+
+}
+</script>

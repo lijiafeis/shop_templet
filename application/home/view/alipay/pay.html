@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title>支付宝付款</title>
+	  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  	<meta http-equiv="X-UA-Compatible" content="ie=edge">
+	<style type="text/css">
+		* {
+			padding: 0;
+			margin: 0;
+		}
+		body,html {
+			width: 100%;
+			height: 100%;
+		}
+		.pay {
+			width: 100%;
+			height: 100%;
+			background: url('__STATIC__/alipay/img/guide.png') no-repeat center;
+			background-size: 100% 100%;
+			overflow: hidden;
+		}
+		.box-img {
+			position: relative;
+			width:  38vw;
+			height: 11vw;
+			overflow: hidden;
+			margin: auto;
+			transform: translateY(80vh);
+		}
+		.box-img img {
+			position: absolute;
+			top:0;
+			width: 100%;
+			max-height: 100%;
+		}
+	</style>
+</head>
+<body>
+	<div class='pay'>
+		<div class='box-img' onclick='jumpUrl()'>
+			<img src="__STATIC__/alipay/img/btn.png">
+		</div>
+	</div>
+</body>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="__STATIC__/alipay/layer/layer.js"></script>
+<script type="text/javascript">
+	// 对浏览器的UserAgent进行正则匹配，不含有微信独有标识的则为其他浏览器
+	var useragent = navigator.userAgent.toLowerCase();
+	if(useragent.match(/MicroMessenger/i) !="micromessenger"){
+		location.href="{$html_url}"
+	}
+</script>
+<script type="text/javascript">
+	function jumpUrl(order_id){
+		if(order_id == 0){
+			href="{:url('/home/Error/index')}"
+		}else{
+			$.ajax({
+				type:"post",
+				url:"{:url('home/Alipay/redirectUrl')}",
+				dataType:"json",
+				data:{
+					order_id:order_id,
+				},
+				success:function(data){
+					if(data == -1){
+						layer.msg('请先支付');
+					}else if(data == 1){
+						location.href="{:url('home/Error/index')}";
+					}
+				}
+			});
+		}
+
+	}
+</script>
+</html>

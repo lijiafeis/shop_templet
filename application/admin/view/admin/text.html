@@ -1,0 +1,134 @@
+<link rel="stylesheet" href="__STATIC__/admin/css/base.css">
+<link rel="stylesheet" href="__STATIC__/admin/css/bootstrap.min.css">
+<link rel="stylesheet" href="__STATIC__/admin/css/base.css">
+<link rel="stylesheet" href="__STATIC__/admin/layui/css/layui.css"  media="all">
+<style>
+    table button{
+        width: 50px;
+        height: 34px;
+        margin-left: 5px;
+    }
+</style>
+<div class="container-fluid main">
+    <div class="main-top"><span  aria-hidden="true"></span>回复</div>
+    <div class="main-content">
+        <div>
+            <div>
+
+                <ul class="nav nav-tabs" role="tablist">
+                    <li role="presentation" class="active"><a href="#home" aria-controls="home" role="tab" data-toggle="tab">列表</a></li>
+                </ul>
+                <div style="margin-bottom:20px;"><a href="{:url('textadd')}"><button type="button" class="btn btn-default" style="background:#44b549;color:#fff;margin-top: 10px;">新增文本回复</button></a></div>
+                <div class="tab-content">
+                    <div role="tabpanel" class="tab-pane active" id="home">
+                        <div id="list">
+
+                        </div>
+                        <div class="pagelist"><div id="demo3"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+<script src="__STATIC__/admin/js/bootstrap.min.js"></script>
+<script src="__STATIC__/admin/layer/layer.js"></script>
+<script src="__STATIC__/admin/layui/layui.js" charset="utf-8"></script>
+<script>
+    getPage(1);
+    function getPage(a) {
+        var index = layer.load(2,{
+            shade:[0.6,'#000']
+        })
+        $.ajax({
+            url:"{:url('text')}",
+            type:"post",
+            dataType:"json",
+            data:{
+                'page':a,
+            },
+            success:function (data) {
+                layer.close(index);
+                setLayPage(data.number,a);
+                setDivData(data.data);
+            },
+            error:function (data) {
+                layer.close(index);
+                layer.msg('网络错误,请稍后重试');
+            }
+        });
+    }
+</script>
+<script>
+    function setLayPage(number,a){
+        layui.use(['laypage', 'layer'], function(){
+            var laypage = layui.laypage
+                ,layer = layui.layer;
+            //自定义首页、尾页、上一页、下一页文本
+            laypage.render({
+                elem: 'demo3'
+                ,count: number
+                ,curr:a//显示第几页
+                ,limit:10
+                ,first: '首页'
+                ,last: '尾页'
+                ,prev: '<em>←</em>'
+                ,next: '<em>→</em>'
+                ,jump: function(obj,first){
+                    if(!first){
+                        getPage(obj.curr);
+                    }
+                }
+            });
+        });
+    }
+    function setDivData(data){
+        str = '';
+        str += '<table class="table table-striped"  style="font-size:14px;margin-top: 20px;"><th>编号</th><th>关键词</th><th>回复内容</th><th>创建时间</th><th>调用次数</th><th>操作</th>';
+        for(i = 0; i < data.length; i++){
+            data[i]['createtime'] = new Date(parseInt(data[i]['createtime']) * 1000).toLocaleString().substr(0,17)
+            str += '<tr style="font-size:13px;" class="data"><td>'+i+'</td>';
+            str += '<td>'+data[i]['keyword']+'</td>';
+            str += '<td>'+data[i]['content']+'</td>';
+            str += '<td>'+data[i]['createtime']+'</td>';
+            str += '<td>'+data[i]['click']+'</td>';
+            str += '<td><a href="{:url("textadd")}?text_id='+data[i]['id']+'"><button type="button" class="btn btn-default btn-sm">修改</button></a><button type="button" class="btn btn-default btn-sm" onclick="del('+data[i]['id']+')">删除</button></td></tr>';
+        }
+        str += '</table>';
+        $('#list').empty();
+        $('#list').append(str);
+    }
+</script>
+<script>
+    function del(i){
+        if(i == ''){
+            layer.msg('参数错误');
+        }
+        layer.confirm('确定删除？', {
+            btn: ['是，确认','否，再看看'] //按钮
+        }, function(){
+            layer.msg('正在删除，请稍候', {icon: 16});
+            $.ajax({
+                type: "POST",
+                url: "{:url('deltext')}",
+                dataType: "json",
+                data: {"id":i},
+                success: function(json){
+                    if(json.success==1){
+                        window.location.href = "{:url('text')}";
+
+                    }else{
+                        layer.msg("处理失败，请重新尝试");
+                    }
+                },
+                error:function(){
+                    layer.msg("发生异常！");
+                }
+            });
+
+        }, function(){
+
+        });
+    }
+</script>

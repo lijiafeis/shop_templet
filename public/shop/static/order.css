@@ -1,0 +1,152 @@
+.order {
+  height: 100vh;
+  background-color: #F2F2F2;
+}
+.order header {
+  padding: 0.3rem 0.5rem;
+  background-color: #ff6f00;
+  color: #FFFFFF;
+}
+.order_title {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order_title span:first-child {
+  font-size: 0.32rem;
+}
+.order_font {
+  font-size: 0.28rem;
+}
+.order_m {
+  margin: 0.2rem 0;
+}
+.order_info {
+  margin: 0.2rem 0;
+  padding: 0.2rem;
+  background-color: #FFFFFF;
+}
+.order_address span {
+  font-size: 0.3rem;
+  color: #333333;
+  font-weight: bold;
+}
+/*地址*/
+.order_info section {
+  margin: 0.2rem 0;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.order_info section p {
+  flex: 1;
+  font-size: 0.3rem;
+  color: #666666;
+}
+.order_info section span {
+  flex-basis: 10%;
+  text-align: center;
+  font-size: 0.4rem;
+  color: #666666;
+}
+/*商品区域*/
+.order_good {
+  padding: 0.2rem;
+  display: flex;
+  background-color: #FFFFFF;
+}
+.order_good section:first-child {
+  width: 1.6rem;
+  height: 1.6rem;
+  position: relative;
+  overflow: hidden;
+}
+.order_good section:first-child img{
+    position: absolute;
+    width: 100%;
+    min-height: 100%;
+    top: 0;
+}
+.order_good section:last-child {
+  flex: 1;
+  margin-left: 0.2rem;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+.good_name {
+  font-size: 0.28rem;
+  color: #333333;
+  font-weight: bold;
+}
+.good_num {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.good_num p,.good_num p span {
+  font-size: 0.24rem;
+  color: #666666;
+}
+.good_num  .good_price {
+  font-size: 0.3rem;
+  color: #ff6f00;
+}
+/*方式*/
+.good_way {
+  margin-top: 1px;
+  height: 0.8rem;
+  line-height: 0.8rem;
+  background-color: #FFFFFF;
+  padding: 0 0.2rem;
+  text-align: right;
+}
+.good_way span,.good_way strong {
+  font-size: 0.3rem;
+  color: #333333;
+}
+.good_way span:last-child {
+  margin-left: 0.2rem;
+}
+.good_way span:first-child strong,.good_way span:last-child strong {
+  color: #ff6f00;
+  font-weight: normal;
+}
+/*留言*/
+.leave {
+  height: 0.8rem;
+  line-height: 0.8rem;
+  padding: 0 0.2rem;
+  background-color: #FFFFFF;
+  margin-top: 0.2rem;
+}
+.leave span {
+  font-size: 0.3rem;
+  color: #333333;
+}
+.leave span:first-child {
+  margin-right: 0.4rem;
+}
+/*订单按钮*/
+.order footer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 0.9rem;
+  display: flex;
+  line-height: 0.9rem;
+}
+.order footer p {
+  flex: 1;
+  font-size: 0.36rem;
+  text-align: center;
+}
+.order footer p:first-child {
+  color: #333333;
+  background-color: #FFFFFF;
+}
+.order footer p:last-child {
+  background-color: #ff6f00;
+  color: #FFFFFF;
+}

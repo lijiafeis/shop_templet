@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1,user-scalable=no">
+	<meta name="format-detection"content="telephone=no"/>
+	<title>{$info['title']}</title>
+	<link rel="stylesheet" href="//cdn.bootcss.com/bootstrap/3.3.5/css/bootstrap.min.css">
+	<script src="//cdn.bootcss.com/jquery/1.11.3/jquery.min.js"></script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js"></script>
+	<style>
+		body{max-width:700px;margin:0 auto;font-family:"Helvetica Neue","Hiragino Sans GB","Microsoft YaHei","\9ED1\4F53",Arial,sans-serif;padding:0;}
+		.title{color:#000;margin-top:25px;}
+		.news-desc{font-size:16px;}
+		.news-desc .time{color:#787777;}
+		.news-desc .appname{color:#5d82b3;}
+		.content{margin-top:20px;font-size:16px;min-height:300px;line-height:25px;margin-bottom:10px;}
+		.content img{max-width:100%;}
+		.foot{margin:50px 0px 25px 0px;}
+		.shang{text-align:center;margin:10px auto;margin-bottom:40px;}
+		.share{text-align:center;color:#777;}
+		
+		.share .iconfont{font-size:35px;color:#999;}
+		.foot .iconfont{color:#5d82b3;}
+		.pinglun{color:#555;background:#f3f3f3;}
+		.clear{clear:both;}
+		
+		.imgBtn {
+	float: left;
+	text-decoration:none;
+	margin-top: 0px;
+	margin-left: 10px;
+	background-repeat: no-repeat;
+	background-position: 0 -13px;
+	height: 18px;
+	width: 20px;
+	color:#999;
+	cursor: pointer
+}
+body .Input_text{border:0px!important;}
+.form-control:focus {
+    border-color: #777;
+    outline: 0;
+   -webkit-box-shadow: inset 0 1px #ccc,0 0 8px #ccc;
+    box-shadow: inset 0 1px 1px #ccc,0 0 8px #ccc;
+}
+.faceDiv {
+	width:90%;
+	
+	border-top: 1px solid #ccc;
+	position:absolute;
+	//top:0;
+	background-color: #fff;
+	-moz-border-radius: 5px 5px 0 0;
+	-webkit-border-radius: 5px 5px 0 0;
+	border-radius: 5px 5px 0 0;
+}
+.faceDiv>img {
+	border: 1px solid #ccc;
+	float: left;
+	margin-left: -1px;
+	margin-top: -1px;
+	position: relative;
+	width: 28px;
+	height: 28px;
+	padding: 3px;
+	cursor: pointer;
+}
+.faceDiv>img:hover {
+	background-color: #efefef;
+}
+.faceDiv>img:active {
+	padding: 4px 3px 2px 3px;
+}
+.layui-m-layerchild h3{margin-top:0;}	
+.layui-m-layercont{padding:20px;}
+.location_link{color:#5d82b3;font-size:16px;margin-right:10px}
+.location_link:focus{text-decoration:urlnderline;color:#f8f8f8;}
+p{margin: 0; }
+.btn-xigua{border:1px solid #F75E47;background:#fff;color:#F75E47;margin:5px;}
+.btn-sure{color:#fff;background:#F75E47;}
+.btn-xigua:hover{color:#fff;}
+.input-control{background:#EAEAEA;border:0;height:35px;border-radius:3px;font-size:14px;width:120px;padding-left:10px;margin:0 5px;}
+.input-control:hover{background:#EAEAEA;}
+	</style>
+</head>
+<body style="background:#f3f3f3;z-index:1;">
+	<div class="container-fluid" style="background:#fff;">
+		<h3 class="title">{$info['title']}</h3>
+		<div class="news-desc" onclick="weixin()">
+			<span class="time">{$info['create_time']}</span>　
+			<span class="appname" style="font-size:12px;">
+			<i class="iconfont">&#xe645;</i>官方分享</span>
+		</div>
+		<div class="clearfix visible-xs-block"></div>
+		<div class="content"><div style="margin-bottom:10px;"></div>{$info['content']}
+		</div>
+		
+
+		
+
+		<div class="share">
+		<div style="border-top:1px solid #999;"></div>
+
+		</div>
+
+
+
+
+		<div class="foot">
+		<span style="color:#8c8c8c;font-size:16px;margin-right:15px">阅读 {$info.read_num}</span>
+		<!--<span class="zan"><i class="iconfont">赞</i></span>-->
+		<!--<span id="zan" style="color:#8c8c8c;">{$info.zan}</span>-->
+		<!--<span id="zan-num" style="color:red;display:none;"></span>-->
+		</div>
+		
+		
+		
+		
+	</div>
+
+	<div id="footer" style="margin-bottom:60px;"></div>
+</body>
+<script type="text/javascript">
+var zan = 0;
+$('.zan').click(function(){
+	if(zan > 0){exit;}
+
+	$.ajax({
+		type:'post',
+		url:"{:url('zan')}",
+		dataType:'json',
+		data:{news:{$info.id}},
+		success:function(json){
+			if(json.type == 1){
+
+				$('#zan').text($('#zan').text()*1 + 1);
+				$('#zan-num').text('　+ 1');
+				$('#zan-num').css('display','inline-block');setTimeout(function(){$('#zan-num').css('display','none');},500);
+			}else{
+
+				$('#zan').text($('#zan').text()*1 - 1);
+				$('#zan-num').text('　- 1');
+				$('#zan-num').css('display','inline-block');setTimeout(function(){$('#zan-num').css('display','none');},500);
+			}
+			zan = 0;
+		},
+		error:function(){
+			alert('请稍后重试');
+		}
+	});
+	
+});
+
+</script>
+</html>
